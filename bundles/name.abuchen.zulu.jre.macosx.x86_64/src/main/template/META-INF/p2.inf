@@ -1,0 +1,9 @@
+instructions.configure = \
+  org.eclipse.equinox.p2.touchpoint.eclipse.setJvm(jvm:../Eclipse/plugins/name.abuchen.zulu.jre.macosx.x86_64_${version}/jre/lib/server/libjvm.dylib);
+
+instructions.unconfigure = \
+  org.eclipse.equinox.p2.touchpoint.eclipse.setJvm(jvm:null);
+
+instructions.install = \
+  org.eclipse.equinox.p2.touchpoint.eclipse.chmod(targetDir:${installFolder}/plugins/name.abuchen.zulu.jre.macosx.x86_64_${version}/jre/,targetFile:bin,permissions:755,options:-R);\
+  org.eclipse.equinox.p2.touchpoint.eclipse.chmod(targetDir:${installFolder}/plugins/name.abuchen.zulu.jre.macosx.x86_64_${version}/jre/lib,targetFile:jspawnhelper,permissions:755);

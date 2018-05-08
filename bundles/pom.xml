@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<parent>
+		<groupId>name.abuchen.zulu</groupId>
+		<artifactId>jre</artifactId>
+		<version>8.30.0.1</version>
+		<relativePath>..</relativePath>
+	</parent>
+
+	<artifactId>bundles</artifactId>
+	<packaging>pom</packaging>
+
+	<properties>
+<!--		<download.url>https://cdn.azul.com/zulu/bin/</download.url> -->
+		<download.url>file:///Users/asbn/Code/Archive/zulu/</download.url>
+		<download.file>zulu8.30.0.1-jdk8.0.172-</download.file>
+		<download.filePostfix>os_arch.zip</download.filePostfix>
+		<download.unzippedFolder>zulu8.30.0.1-jdk8.0.172-</download.unzippedFolder>
+		<download.unzippedFolderPostfix>os_arch</download.unzippedFolderPostfix>
+		<download.type>zip</download.type>
+	</properties>
+
+	<modules>
+		<module>name.abuchen.zulu.jre.linux.x86</module>
+		<module>name.abuchen.zulu.jre.linux.x86_64</module>
+		<module>name.abuchen.zulu.jre.macosx.x86_64</module>
+		<module>name.abuchen.zulu.jre.win32.x86</module>
+		<module>name.abuchen.zulu.jre.win32.x86_64</module>
+	</modules>
+
+	<build>
+		<pluginManagement>
+			<plugins>
+			<plugin>
+				<groupId>org.eclipse.tycho</groupId>
+				<artifactId>target-platform-configuration</artifactId>
+				<version>${tycho-version}</version>
+				<configuration>
+					<resolver>p2</resolver>
+					<pomDependencies>consider</pomDependencies>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>exec-maven-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>Download Zulu: ${download.file}${download.filePostfix}</id>
+						<phase>process-resources</phase>
+						<goals>
+							<goal>exec</goal>
+						</goals>
+						<configuration>
+							<executable>curl</executable>
+							<arguments>
+								<argument>-L</argument>
+								<argument>-#</argument>
+								<argument>--create-dirs</argument>
+								<argument>--output</argument>
+								<argument>${project.build.directory}/${download.file}${download.filePostfix}</argument>
+								<argument>${download.url}${download.file}${download.filePostfix}</argument>
+							</arguments>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<artifactId>maven-antrun-plugin</artifactId>
+				<version>1.8</version>
+				<executions>
+					<execution>
+						<phase>process-resources</phase>
+						<goals>
+							<goal>run</goal>
+						</goals>
+						<configuration>
+							<target>
+								<echo message="Unzip: ${download.file}${download.filePostfix}"/>
+								<ac:if xmlns:ac="antlib:net.sf.antcontrib">
+									<equals arg1="${download.type}" arg2="gzip"/> 
+									<then>
+										<untar compression="gzip" dest="${project.build.directory}/downloads/" src="${project.build.directory}/${download.file}${download.filePostfix}"/>
+									</then>
+									<else>
+										<unzip dest="${project.build.directory}/downloads/" src="${project.build.directory}/${download.file}${download.filePostfix}"/>
+									</else>
+								</ac:if>
+								<move file="${project.build.directory}/downloads/${download.unzippedFolder}${download.unzippedFolderPostfix}/jre" tofile="${project.build.directory}/downloads/jre"/>
+							</target>
+						</configuration>
+					</execution>
+				</executions>
+				<dependencies>
+      			    <dependency>
+            			<groupId>ant-contrib</groupId>
+            			<artifactId>ant-contrib</artifactId>
+            			<version>1.0b3</version>
+            			<exclusions>
+      <exclusion>
+        <groupId>ant</groupId>
+        <artifactId>ant</artifactId>
+      </exclusion>
+    </exclusions>
+          			</dependency>
+        		</dependencies>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-resources-plugin</artifactId>
+				<version>2.6</version>
+				<executions>
+					<execution>
+						<id>process-p2.inf</id>
+						<phase>process-resources</phase>
+						<goals>
+							<goal>copy-resources</goal>
+						</goals>
+						<configuration>
+							<outputDirectory>${project.build.directory}/templates</outputDirectory>
+							<overwrite>true</overwrite>
+							<resources>
+								<resource>
+									<directory>${project.basedir}/src/main/template</directory>
+									<includes>
+										<include>**/*</include>
+									</includes>
+									<filtering>true</filtering>
+								</resource>
+							</resources>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<groupId>org.eclipse.tycho</groupId>
+				<artifactId>tycho-packaging-plugin</artifactId>
+				<configuration>
+					<additionalFileSets>
+						<!-- include jre -->
+						<fileSet>
+							<directory>${project.build.directory}/downloads/</directory>
+							<includes>
+								<include>jre/**/*</include>
+							</includes>
+							<excludes>
+								<!-- bin -->
+								<exclude>jre/bin/rmid</exclude>
+								<exclude>jre/bin/rmiregistry</exclude>
+								<exclude>jre/bin/tnameserv</exclude>
+								<exclude>jre/bin/keytool</exclude>
+								<exclude>jre/bin/policytool</exclude>
+								<exclude>jre/bin/orbd</exclude>
+								<exclude>jre/bin/servertool</exclude>
+								<exclude>jre/bin/javaws</exclude>
+								<exclude>jre/bin/pack200</exclude>
+								<exclude>jre/bin/unpack200</exclude>
+
+								<!-- bin [Microsoft Windows] -->
+								<exclude>jre/bin/rmid.exe</exclude>
+								<exclude>jre/bin/rmiregistry.exe</exclude>
+								<exclude>jre/bin/tnameserv.exe</exclude>
+								<exclude>jre/bin/keytool.exe</exclude>
+								<exclude>jre/bin/policytool.exe</exclude>
+								<exclude>jre/bin/orbd.exe</exclude>
+								<exclude>jre/bin/servertool.exe</exclude>
+								<exclude>jre/bin/javaws.exe</exclude>
+								<exclude>jre/bin/kinit.exe</exclude>
+								<exclude>jre/bin/klist.exe</exclude>
+								<exclude>jre/bin/ktab.exe</exclude>
+
+								<!-- lib/ext --> 
+								<exclude>jre/lib/ext/cldrdata.jar</exclude>
+								<exclude>jre/lib/ext/jaccess.jar</exclude>
+								<exclude>jre/lib/ext/nashorn.jar</exclude>
+								<exclude>jre/lib/ext/zipfs.jar</exclude>
+							</excludes>
+						</fileSet>
+						<!-- filter p2.inf w/ correct version info -->
+						<fileSet>
+							<directory>${project.build.directory}/templates/</directory>
+							<includes>
+								<include>**/*</include>
+							</includes>
+						</fileSet>
+					</additionalFileSets>
+				</configuration>
+			</plugin>
+		</plugins>
+		</pluginManagement>
+	</build>
+</project>

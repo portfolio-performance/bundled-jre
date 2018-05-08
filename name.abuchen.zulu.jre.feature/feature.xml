@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feature
+      id="name.abuchen.zulu.jre.feature"
+      label="%Bundle-Name"
+      version="8.30.0.1"
+      provider-name="%Bundle-Vendor">
+
+   <plugin
+         id="name.abuchen.zulu.jre.linux.x86"
+         version="0.0.0"
+         optional="true"
+         os="linux"
+         arch="x86"
+         unpack="true"/>
+
+   <plugin
+         id="name.abuchen.zulu.jre.linux.x86_64"
+         version="0.0.0"
+         optional="true"
+         os="linux"
+         arch="x86_64"
+         unpack="true"/>
+
+   <plugin
+         id="name.abuchen.zulu.jre.macosx.x86_64"
+         version="0.0.0"
+         optional="true"
+         os="macosx"
+         arch="x86_64"
+         unpack="true"/>
+
+   <plugin
+         id="name.abuchen.zulu.jre.win32.x86"
+         version="0.0.0"
+         optional="true"
+         os="win32"
+         arch="x86"
+         unpack="true"/>
+
+   <plugin
+         id="name.abuchen.zulu.jre.win32.x86_64"
+         version="0.0.0"
+         optional="true"
+         os="win32"
+         arch="x86_64"
+         unpack="true"/>
+
+</feature>
