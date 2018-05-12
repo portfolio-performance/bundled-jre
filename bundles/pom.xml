@@ -19,7 +19,7 @@
 		-->
 		<download.file>zulu8.30.0.1-jdk8.0.172-</download.file>
 		<download.filePostfix>os_arch.zip</download.filePostfix>
-		<download.unzippedFolder>zulu8.30.0.1-jdk8.0.172-</download.unzippedFolder>
+		<download.unzippedFolder>${download.file}</download.unzippedFolder>
 		<download.unzippedFolderPostfix>os_arch</download.unzippedFolderPostfix>
 		<download.type>zip</download.type>
 	</properties>
