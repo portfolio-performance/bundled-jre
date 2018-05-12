@@ -13,8 +13,10 @@
 	<packaging>pom</packaging>
 
 	<properties>
-<!--		<download.url>https://cdn.azul.com/zulu/bin/</download.url> -->
-		<download.url>file:///Users/asbn/Code/Archive/zulu/</download.url>
+		<download.url>https://cdn.azul.com/zulu/bin/</download.url>
+		<!-- to test locally, place files in a local directory
+		<download.url>file:///Users/.../zulu/</download.url>
+		-->
 		<download.file>zulu8.30.0.1-jdk8.0.172-</download.file>
 		<download.filePostfix>os_arch.zip</download.filePostfix>
 		<download.unzippedFolder>zulu8.30.0.1-jdk8.0.172-</download.unzippedFolder>
