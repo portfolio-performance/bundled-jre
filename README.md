@@ -79,6 +79,6 @@ Update the versions using the Tycho versions plugin:
 mvn org.eclipse.tycho:tycho-versions-plugin:1.0.0:set-version -DnewVersion=8.30.0.1
 ```
 
-Of course, this does not update the JRE version itself (update the Java version in the [bundles/pom.xml](pom.xml#L20)).
+Of course, this does not update the JRE version itself (update the Java version in the [bundles/pom.xml](bundles/pom.xml#L20)).
 But it is helpful to test the self-update: build once, then copy the test product to a separate location, update the version number,
 and build again. Then you can run the self-update in the test product. Check that ```java.home``` environment points to the JRE in the updated bundle.
