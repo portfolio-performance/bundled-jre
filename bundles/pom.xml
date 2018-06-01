@@ -22,6 +22,7 @@
 		<download.unzippedFolder>${download.file}</download.unzippedFolder>
 		<download.unzippedFolderPostfix>os_arch</download.unzippedFolderPostfix>
 		<download.type>zip</download.type>
+		<jre.folder>jre</jre.folder>
 	</properties>
 
 	<modules>
@@ -89,7 +90,7 @@
 										<unzip dest="${project.build.directory}/downloads/" src="${project.build.directory}/${download.file}${download.filePostfix}"/>
 									</else>
 								</ac:if>
-								<move file="${project.build.directory}/downloads/${download.unzippedFolder}${download.unzippedFolderPostfix}/jre" tofile="${project.build.directory}/downloads/jre"/>
+								<move file="${project.build.directory}/downloads/${download.unzippedFolder}${download.unzippedFolderPostfix}/jre" tofile="${project.build.directory}/downloads/${jre.folder}"/>
 							</target>
 						</configuration>
 					</execution>
@@ -144,39 +145,39 @@
 						<fileSet>
 							<directory>${project.build.directory}/downloads/</directory>
 							<includes>
-								<include>jre/**/*</include>
+								<include>${jre.folder}/**/*</include>
 							</includes>
 							<excludes>
 								<!-- bin -->
-								<exclude>jre/bin/rmid</exclude>
-								<exclude>jre/bin/rmiregistry</exclude>
-								<exclude>jre/bin/tnameserv</exclude>
-								<exclude>jre/bin/keytool</exclude>
-								<exclude>jre/bin/policytool</exclude>
-								<exclude>jre/bin/orbd</exclude>
-								<exclude>jre/bin/servertool</exclude>
-								<exclude>jre/bin/javaws</exclude>
-								<exclude>jre/bin/pack200</exclude>
-								<exclude>jre/bin/unpack200</exclude>
+								<exclude>${jre.folder}/bin/rmid</exclude>
+								<exclude>${jre.folder}/bin/rmiregistry</exclude>
+								<exclude>${jre.folder}/bin/tnameserv</exclude>
+								<exclude>${jre.folder}/bin/keytool</exclude>
+								<exclude>${jre.folder}/bin/policytool</exclude>
+								<exclude>${jre.folder}/bin/orbd</exclude>
+								<exclude>${jre.folder}/bin/servertool</exclude>
+								<exclude>${jre.folder}/bin/javaws</exclude>
+								<exclude>${jre.folder}/bin/pack200</exclude>
+								<exclude>${jre.folder}/bin/unpack200</exclude>
 
 								<!-- bin [Microsoft Windows] -->
-								<exclude>jre/bin/rmid.exe</exclude>
-								<exclude>jre/bin/rmiregistry.exe</exclude>
-								<exclude>jre/bin/tnameserv.exe</exclude>
-								<exclude>jre/bin/keytool.exe</exclude>
-								<exclude>jre/bin/policytool.exe</exclude>
-								<exclude>jre/bin/orbd.exe</exclude>
-								<exclude>jre/bin/servertool.exe</exclude>
-								<exclude>jre/bin/javaws.exe</exclude>
-								<exclude>jre/bin/kinit.exe</exclude>
-								<exclude>jre/bin/klist.exe</exclude>
-								<exclude>jre/bin/ktab.exe</exclude>
+								<exclude>${jre.folder}/bin/rmid.exe</exclude>
+								<exclude>${jre.folder}/bin/rmiregistry.exe</exclude>
+								<exclude>${jre.folder}/bin/tnameserv.exe</exclude>
+								<exclude>${jre.folder}/bin/keytool.exe</exclude>
+								<exclude>${jre.folder}/bin/policytool.exe</exclude>
+								<exclude>${jre.folder}/bin/orbd.exe</exclude>
+								<exclude>${jre.folder}/bin/servertool.exe</exclude>
+								<exclude>${jre.folder}/bin/javaws.exe</exclude>
+								<exclude>${jre.folder}/bin/kinit.exe</exclude>
+								<exclude>${jre.folder}/bin/klist.exe</exclude>
+								<exclude>${jre.folder}/bin/ktab.exe</exclude>
 
-								<!-- lib/ext --> 
-								<exclude>jre/lib/ext/cldrdata.jar</exclude>
-								<exclude>jre/lib/ext/jaccess.jar</exclude>
-								<exclude>jre/lib/ext/nashorn.jar</exclude>
-								<exclude>jre/lib/ext/zipfs.jar</exclude>
+								<!-- lib/ext -->
+								<exclude>${jre.folder}/lib/ext/cldrdata.jar</exclude>
+								<exclude>${jre.folder}/lib/ext/jaccess.jar</exclude>
+								<exclude>${jre.folder}/lib/ext/nashorn.jar</exclude>
+								<exclude>${jre.folder}/lib/ext/zipfs.jar</exclude>
 							</excludes>
 						</fileSet>
 						<!-- filter p2.inf w/ correct version info -->

@@ -15,6 +15,7 @@
 	<properties>
 		<download.filePostfix>macosx_x64.zip</download.filePostfix>
 		<download.unzippedFolderPostfix>macosx_x64</download.unzippedFolderPostfix>
+		<jre.folder>Contents/Home</jre.folder>
 	</properties>
 
 	<build>
