@@ -33,7 +33,7 @@
                         <key>JVMMinimumSystemVersion</key>
                         <string>10.6.0</string>
                         <key>JVMPlatformVersion</key>
-                        <string>1.8</string>
+                        <string>11.0</string>
                         <key>JVMVendor</key>
                         <string>UNDEFINED</string>
                         <key>JVMVersion</key>

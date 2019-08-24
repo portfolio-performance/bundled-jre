@@ -5,7 +5,7 @@
 	<parent>
 		<groupId>name.abuchen.zulu</groupId>
 		<artifactId>jre</artifactId>
-		<version>8.30.0.1-patch1</version>
+		<version>11.0.4</version>
 		<relativePath>..</relativePath>
 	</parent>
 
@@ -17,7 +17,7 @@
 		<!-- to test locally, place files in a local directory
 		<download.url>file:///Users/.../zulu/</download.url>
 		-->
-		<download.file>zulu8.30.0.1-jdk8.0.172-</download.file>
+		<download.file>zulu11.33.15-ca-jre11.0.4-</download.file>
 		<download.filePostfix>os_arch.zip</download.filePostfix>
 		<download.unzippedFolder>${download.file}</download.unzippedFolder>
 		<download.unzippedFolderPostfix>os_arch</download.unzippedFolderPostfix>
@@ -26,10 +26,8 @@
 	</properties>
 
 	<modules>
-		<module>name.abuchen.zulu.jre.linux.x86</module>
 		<module>name.abuchen.zulu.jre.linux.x86_64</module>
 		<module>name.abuchen.zulu.jre.macosx.x86_64</module>
-		<module>name.abuchen.zulu.jre.win32.x86</module>
 		<module>name.abuchen.zulu.jre.win32.x86_64</module>
 	</modules>
 
@@ -90,7 +88,7 @@
 										<unzip dest="${project.build.directory}/downloads/" src="${project.build.directory}/${download.file}${download.filePostfix}"/>
 									</else>
 								</ac:if>
-								<move file="${project.build.directory}/downloads/${download.unzippedFolder}${download.unzippedFolderPostfix}/jre" tofile="${project.build.directory}/downloads/${jre.folder}"/>
+								<move file="${project.build.directory}/downloads/${download.unzippedFolder}${download.unzippedFolderPostfix}" tofile="${project.build.directory}/downloads/${jre.folder}"/>
 							</target>
 						</configuration>
 					</execution>
@@ -159,6 +157,11 @@
 								<exclude>${jre.folder}/bin/javaws</exclude>
 								<exclude>${jre.folder}/bin/pack200</exclude>
 								<exclude>${jre.folder}/bin/unpack200</exclude>
+								<exclude>${jre.folder}/bin/jrunscript</exclude>
+								<exclude>${jre.folder}/bin/jaotc</exclude>
+								<exclude>${jre.folder}/bin/jfr</exclude>
+								<exclude>${jre.folder}/bin/jjs</exclude>
+
 
 								<!-- bin [Microsoft Windows] -->
 								<exclude>${jre.folder}/bin/rmid.exe</exclude>
@@ -172,6 +175,15 @@
 								<exclude>${jre.folder}/bin/kinit.exe</exclude>
 								<exclude>${jre.folder}/bin/klist.exe</exclude>
 								<exclude>${jre.folder}/bin/ktab.exe</exclude>
+								<exclude>${jre.folder}/bin/javaws.exe</exclude>
+								<exclude>${jre.folder}/bin/pack200.exe</exclude>
+								<exclude>${jre.folder}/bin/unpack200.exe</exclude>
+								<exclude>${jre.folder}/bin/jrunscript.exe</exclude>
+								<exclude>${jre.folder}/bin/jaotc.exe</exclude>
+								<exclude>${jre.folder}/bin/jfr.exe</exclude>
+								<exclude>${jre.folder}/bin/jabswitch.exe</exclude>
+								<exclude>${jre.folder}/bin/jaccessinspector.exe</exclude>
+								<exclude>${jre.folder}/bin/jaccesswalker.exe</exclude>
 
 								<!-- lib/ext -->
 								<exclude>${jre.folder}/lib/ext/cldrdata.jar</exclude>

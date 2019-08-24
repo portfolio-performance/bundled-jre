@@ -9,17 +9,14 @@
 
 	<groupId>name.abuchen.zulu</groupId>
 	<artifactId>jre</artifactId>
-	<version>8.30.0.1-patch1</version>
+	<version>11.0.4</version>
 	<packaging>pom</packaging>
 
 	<name>Bundled Oracle Java JRE</name>
 
 	<properties>
-		<tycho-version>1.0.0</tycho-version>
-		<!-- jarsigner 1.4 does not support the certchain attribute (needed b/c 
-			the hardware token does not contain the whole certificate chain). Using the 
-			1.5-SNAPSHOT build which supports the argument since Aug 2017 -->
-		<jarsigner.plugin.version>1.5-SNAPSHOT</jarsigner.plugin.version>
+		<tycho-version>1.4.0</tycho-version>
+		<jarsigner.plugin.version>3.0.0</jarsigner.plugin.version>
 		<jarsigner.skip>true</jarsigner.skip>
 	</properties>
 
@@ -31,9 +28,11 @@
 	</modules>
 
 	<repositories>
+		<!-- keep previous version for 32bit JRE in the feature -->
 		<repository>
-			<id>portfolio-non-maven-dependencies</id>
-			<url>http://buchen.github.io/maven-repo</url>
+			<id>portfolio-jre</id>
+			<layout>p2</layout>
+			<url>http://buchen.github.io/bundled-jre/8.30.0.1-patch1</url>
 		</repository>
 		<repository>
 			<id>eclipse</id>
@@ -64,19 +63,9 @@
 							<arch>x86_64</arch>
 						</environment>
 						<environment>
-							<os>linux</os>
-							<ws>gtk</ws>
-							<arch>x86</arch>
-						</environment>
-						<environment>
 							<os>macosx</os>
 							<ws>cocoa</ws>
 							<arch>x86_64</arch>
-						</environment>
-						<environment>
-							<os>win32</os>
-							<ws>win32</ws>
-							<arch>x86</arch>
 						</environment>
 						<environment>
 							<os>win32</os>
@@ -124,6 +113,11 @@
 				<plugin>
 					<groupId>org.eclipse.tycho</groupId>
 					<artifactId>tycho-packaging-plugin</artifactId>
+					<version>${tycho-version}</version>
+				</plugin>
+				<plugin>
+					<groupId>org.eclipse.tycho</groupId>
+					<artifactId>tycho-p2-repository-plugin</artifactId>
 					<version>${tycho-version}</version>
 				</plugin>
 				<plugin>

@@ -18,9 +18,11 @@ The [Tycho](https://www.eclipse.org/tycho/) build in this repository does:
 * Create a feature with all JRE bundles and a repository for use in other builds
 * Create an RCP e4 application with self-update functionality to test the packaged JRE
 
+:warning: As [Portfolio Performance](https://github.com/buchen/portfolio) is transitioning to only 64bit SWT versions, the current feature mixes 32bit Java8 with 64bit Java11 JRE bundles. It is very likely that you do **not** want that for your project, therefore a) remove the 32bit bundles from the [feature.xml](name.abuchen.zulu.jre.feature/feature.xml) and b) remove the p2 repository in the [pom.xml](pom.xml).
+
 ## Notes
 
-The Java version is configured in [bundles/pom.xml](pom.xml#L20):
+The Java version is configured in [bundles/pom.xml](bundles/pom.xml#L20):
 
 ```xml
 <properties>
