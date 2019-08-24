@@ -6,14 +6,6 @@
       provider-name="%Bundle-Vendor">
 
    <plugin
-         id="name.abuchen.zulu.jre.linux.x86"
-         version="0.0.0"
-         optional="true"
-         os="linux"
-         arch="x86"
-         unpack="true"/>
-
-   <plugin
          id="name.abuchen.zulu.jre.linux.x86_64"
          version="0.0.0"
          optional="true"
@@ -27,14 +19,6 @@
          optional="true"
          os="macosx"
          arch="x86_64"
-         unpack="true"/>
-
-   <plugin
-         id="name.abuchen.zulu.jre.win32.x86"
-         version="0.0.0"
-         optional="true"
-         os="win32"
-         arch="x86"
          unpack="true"/>
 
    <plugin
