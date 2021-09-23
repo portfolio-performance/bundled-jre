@@ -15,19 +15,21 @@
 	<properties>
 		<download.url>https://cdn.azul.com/zulu/bin/</download.url>
 		<!-- to test locally, place files in a local directory
-		<download.url>file:///Users/.../zulu/</download.url>
+		<download.url>file:///.../Archive/zulu/</download.url>
 		-->
-		<download.file>zulu11.33.15-ca-jre11.0.4-</download.file>
+		<download.file>zulu11.50.19-ca-jre11.0.12-</download.file>
 		<download.filePostfix>os_arch.zip</download.filePostfix>
 		<download.unzippedFolder>${download.file}</download.unzippedFolder>
 		<download.unzippedFolderPostfix>os_arch</download.unzippedFolderPostfix>
 		<download.type>zip</download.type>
+		<download.jre.folder></download.jre.folder>
 		<jre.folder>jre</jre.folder>
 	</properties>
 
 	<modules>
 		<module>name.abuchen.zulu.jre.linux.x86_64</module>
 		<module>name.abuchen.zulu.jre.macosx.x86_64</module>
+		<module>name.abuchen.zulu.jre.macosx.aarch64</module>
 		<module>name.abuchen.zulu.jre.win32.x86_64</module>
 	</modules>
 
@@ -88,7 +90,7 @@
 										<unzip dest="${project.build.directory}/downloads/" src="${project.build.directory}/${download.file}${download.filePostfix}"/>
 									</else>
 								</ac:if>
-								<move file="${project.build.directory}/downloads/${download.unzippedFolder}${download.unzippedFolderPostfix}" tofile="${project.build.directory}/downloads/${jre.folder}"/>
+								<move file="${project.build.directory}/downloads/${download.unzippedFolder}${download.unzippedFolderPostfix}/${download.jre.folder}" tofile="${project.build.directory}/downloads/${jre.folder}"/>
 							</target>
 						</configuration>
 					</execution>
@@ -146,6 +148,9 @@
 								<include>${jre.folder}/**/*</include>
 							</includes>
 							<excludes>
+								<exclude>zulu11.50.19-ca-jre11.0.12-macosx_x64</exclude>
+								<exclude>zulu11.50.19-ca-jre11.0.12-macosx_aarch64</exclude>
+
 								<!-- bin -->
 								<exclude>${jre.folder}/bin/rmid</exclude>
 								<exclude>${jre.folder}/bin/rmiregistry</exclude>
@@ -190,6 +195,8 @@
 								<exclude>${jre.folder}/lib/ext/jaccess.jar</exclude>
 								<exclude>${jre.folder}/lib/ext/nashorn.jar</exclude>
 								<exclude>${jre.folder}/lib/ext/zipfs.jar</exclude>
+
+								<!-- lib/ext -->
 							</excludes>
 						</fileSet>
 						<!-- filter p2.inf w/ correct version info -->

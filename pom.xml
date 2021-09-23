@@ -27,35 +27,12 @@
 		<repository>
 			<id>eclipse</id>
 			<layout>p2</layout>
-			<url>http://download.eclipse.org/eclipse/updates/4.9/R-4.9-201809060745</url>
+			<url>https://download.eclipse.org/eclipse/updates/4.21/R-4.21-202109060500</url>
 		</repository>
 	</repositories>
 
 	<build>
 		<plugins>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-enforcer-plugin</artifactId>
-				<version>3.0.0-M2</version>
-				<executions>
-					<execution>
-						<id>enforce-versions</id>
-						<goals>
-							<goal>enforce</goal>
-						</goals>
-						<configuration>
-							<rules>
-								<requireMavenVersion>
-									<version>3.5.2</version>
-								</requireMavenVersion>
-								<requireJavaVersion>
-									<version>1.8</version>
-								</requireJavaVersion>
-							</rules>
-						</configuration>
-					</execution>
-				</executions>
-			</plugin>
 			<plugin>
 				<groupId>org.eclipse.tycho</groupId>
 				<artifactId>tycho-maven-plugin</artifactId>
@@ -79,6 +56,11 @@
 							<os>macosx</os>
 							<ws>cocoa</ws>
 							<arch>x86_64</arch>
+						</environment>
+						<environment>
+							<os>macosx</os>
+							<ws>cocoa</ws>
+							<arch>aarch64</arch>
 						</environment>
 						<environment>
 							<os>win32</os>
@@ -145,38 +127,6 @@
 					<groupId>org.codehaus.mojo</groupId>
 					<artifactId>exec-maven-plugin</artifactId>
 					<version>1.6.0</version>
-				</plugin>
-				<plugin>
-					<groupId>org.apache.maven.plugins</groupId>
-					<artifactId>maven-jarsigner-plugin</artifactId>
-					<version>${jarsigner.plugin.version}</version>
-					<executions>
-						<execution>
-							<id>sign</id>
-							<goals>
-								<goal>sign</goal>
-							</goals>
-						</execution>
-						<execution>
-							<id>verify</id>
-							<goals>
-								<goal>verify</goal>
-							</goals>
-						</execution>
-					</executions>
-					<configuration>
-						<skip>${jarsigner.skip}</skip>
-						<certs>true</certs>
-						<verbose>true</verbose>
-						<keystore>NONE</keystore>
-						<storetype>PKCS11</storetype>
-						<providerClass>sun.security.pkcs11.SunPKCS11</providerClass>
-						<storepass>${jarsigner.storepass}</storepass>
-						<alias>Open Source Developer, Andreas Buchen</alias>
-						<providerArg>${jarsigner.providerArg}</providerArg>
-						<certchain>${project.basedir}/../../certchain.txt</certchain>
-						<tsa>http://time.certum.pl/</tsa>
-					</configuration>
 				</plugin>
 			</plugins>
 		</pluginManagement>

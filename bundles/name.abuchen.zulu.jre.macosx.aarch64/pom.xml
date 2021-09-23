@@ -9,12 +9,12 @@
 		<relativePath>..</relativePath>
 	</parent>
 
-	<artifactId>name.abuchen.zulu.jre.macosx.x86_64</artifactId>
+	<artifactId>name.abuchen.zulu.jre.macosx.aarch64</artifactId>
 	<packaging>eclipse-plugin</packaging>
 
 	<properties>
-		<download.filePostfix>macosx_x64.zip</download.filePostfix>
-		<download.unzippedFolderPostfix>macosx_x64</download.unzippedFolderPostfix>
+		<download.filePostfix>macosx_aarch64.zip</download.filePostfix>
+		<download.unzippedFolderPostfix>macosx_aarch64</download.unzippedFolderPostfix>
 		<download.jre.folder>zulu-11.jre</download.jre.folder>
 		<jre.folder></jre.folder>
 	</properties>
@@ -31,7 +31,7 @@
 						<environment>
 							<os>macosx</os>
 							<ws>cocoa</ws>
-							<arch>x86_64</arch>
+							<arch>aarch64</arch>
 						</environment>
 					</environments>
 				</configuration>

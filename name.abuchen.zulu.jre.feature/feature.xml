@@ -22,6 +22,14 @@
          unpack="true"/>
 
    <plugin
+         id="name.abuchen.zulu.jre.macosx.aarch64"
+         version="0.0.0"
+         optional="true"
+         os="macosx"
+         arch="aarch64"
+         unpack="true"/>
+
+   <plugin
          id="name.abuchen.zulu.jre.win32.x86_64"
          version="0.0.0"
          optional="true"
