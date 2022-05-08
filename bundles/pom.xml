@@ -5,7 +5,7 @@
 	<parent>
 		<groupId>name.abuchen.zulu</groupId>
 		<artifactId>jre</artifactId>
-		<version>11.0.12</version>
+		<version>11.0.15</version>
 		<relativePath>..</relativePath>
 	</parent>
 
@@ -17,7 +17,7 @@
 		<!-- to test locally, place files in a local directory
 		<download.url>file:///.../Archive/zulu/</download.url>
 		-->
-		<download.file>zulu11.50.19-ca-jre11.0.12-</download.file>
+		<download.file>zulu11.56.19-ca-jre11.0.15-</download.file>		
 		<download.filePostfix>os_arch.zip</download.filePostfix>
 		<download.unzippedFolder>${download.file}</download.unzippedFolder>
 		<download.unzippedFolderPostfix>os_arch</download.unzippedFolderPostfix>
@@ -148,55 +148,8 @@
 								<include>${jre.folder}/**/*</include>
 							</includes>
 							<excludes>
-								<exclude>zulu11.50.19-ca-jre11.0.12-macosx_x64</exclude>
-								<exclude>zulu11.50.19-ca-jre11.0.12-macosx_aarch64</exclude>
-
-								<!-- bin -->
-								<exclude>${jre.folder}/bin/rmid</exclude>
-								<exclude>${jre.folder}/bin/rmiregistry</exclude>
-								<exclude>${jre.folder}/bin/tnameserv</exclude>
-								<exclude>${jre.folder}/bin/keytool</exclude>
-								<exclude>${jre.folder}/bin/policytool</exclude>
-								<exclude>${jre.folder}/bin/orbd</exclude>
-								<exclude>${jre.folder}/bin/servertool</exclude>
-								<exclude>${jre.folder}/bin/javaws</exclude>
-								<exclude>${jre.folder}/bin/pack200</exclude>
-								<exclude>${jre.folder}/bin/unpack200</exclude>
-								<exclude>${jre.folder}/bin/jrunscript</exclude>
-								<exclude>${jre.folder}/bin/jaotc</exclude>
-								<exclude>${jre.folder}/bin/jfr</exclude>
-								<exclude>${jre.folder}/bin/jjs</exclude>
-
-
-								<!-- bin [Microsoft Windows] -->
-								<exclude>${jre.folder}/bin/rmid.exe</exclude>
-								<exclude>${jre.folder}/bin/rmiregistry.exe</exclude>
-								<exclude>${jre.folder}/bin/tnameserv.exe</exclude>
-								<exclude>${jre.folder}/bin/keytool.exe</exclude>
-								<exclude>${jre.folder}/bin/policytool.exe</exclude>
-								<exclude>${jre.folder}/bin/orbd.exe</exclude>
-								<exclude>${jre.folder}/bin/servertool.exe</exclude>
-								<exclude>${jre.folder}/bin/javaws.exe</exclude>
-								<exclude>${jre.folder}/bin/kinit.exe</exclude>
-								<exclude>${jre.folder}/bin/klist.exe</exclude>
-								<exclude>${jre.folder}/bin/ktab.exe</exclude>
-								<exclude>${jre.folder}/bin/javaws.exe</exclude>
-								<exclude>${jre.folder}/bin/pack200.exe</exclude>
-								<exclude>${jre.folder}/bin/unpack200.exe</exclude>
-								<exclude>${jre.folder}/bin/jrunscript.exe</exclude>
-								<exclude>${jre.folder}/bin/jaotc.exe</exclude>
-								<exclude>${jre.folder}/bin/jfr.exe</exclude>
-								<exclude>${jre.folder}/bin/jabswitch.exe</exclude>
-								<exclude>${jre.folder}/bin/jaccessinspector.exe</exclude>
-								<exclude>${jre.folder}/bin/jaccesswalker.exe</exclude>
-
-								<!-- lib/ext -->
-								<exclude>${jre.folder}/lib/ext/cldrdata.jar</exclude>
-								<exclude>${jre.folder}/lib/ext/jaccess.jar</exclude>
-								<exclude>${jre.folder}/lib/ext/nashorn.jar</exclude>
-								<exclude>${jre.folder}/lib/ext/zipfs.jar</exclude>
-
-								<!-- lib/ext -->
+								<exclude>zulu11.56.19-ca-jre11.0.15-macosx_x64</exclude>
+								<exclude>zulu11.56.19-ca-jre11.0.15-macosx_aarch64</exclude>
 							</excludes>
 						</fileSet>
 						<!-- filter p2.inf w/ correct version info -->

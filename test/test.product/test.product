@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?pde version="3.5"?>
 
-<product name="Test Product" uid="test.product" id="test.rcp.product" application="org.eclipse.e4.ui.workbench.swt.E4Application" version="11.0.12" useFeatures="true" includeLaunchers="true">
+<product name="Test Product" uid="test.product" id="test.rcp.product" application="org.eclipse.e4.ui.workbench.swt.E4Application" version="11.0.15" useFeatures="true" includeLaunchers="true">
 
    <configIni use="default">
    </configIni>
@@ -36,7 +36,7 @@
       <feature id="org.eclipse.emf.ecore"/>
       <feature id="org.eclipse.emf.common"/>
       <feature id="org.eclipse.equinox.p2.core.feature"/>
-      <feature id="org.eclipse.ecf.filetransfer.httpclient45.feature"/>
+      <feature id="org.eclipse.ecf.filetransfer.httpclient5.feature"/>
       <feature id="org.eclipse.ecf.core.ssl.feature"/>
       <feature id="org.eclipse.ecf.filetransfer.ssl.feature"/>
       <feature id="org.eclipse.ecf.core.feature"/>

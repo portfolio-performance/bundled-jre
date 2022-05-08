@@ -5,13 +5,13 @@
 
 	<groupId>name.abuchen.zulu</groupId>
 	<artifactId>jre</artifactId>
-	<version>11.0.12</version>
+	<version>11.0.15</version>
 	<packaging>pom</packaging>
 
-	<name>Bundled Oracle Java JRE</name>
+	<name>Bundled Azul Java JRE</name>
 
 	<properties>
-		<tycho-version>2.4.0</tycho-version>
+		<tycho-version>2.6.0</tycho-version>
 		<jarsigner.plugin.version>3.0.0</jarsigner.plugin.version>
 		<jarsigner.skip>true</jarsigner.skip>
 	</properties>
@@ -27,7 +27,7 @@
 		<repository>
 			<id>eclipse</id>
 			<layout>p2</layout>
-			<url>https://download.eclipse.org/eclipse/updates/4.21/R-4.21-202109060500</url>
+			<url>https://download.eclipse.org/eclipse/updates/4.23/R-4.23-202203080310</url>
 		</repository>
 	</repositories>
 
