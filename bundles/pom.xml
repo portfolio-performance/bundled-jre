@@ -5,7 +5,7 @@
 	<parent>
 		<groupId>name.abuchen.zulu</groupId>
 		<artifactId>jre</artifactId>
-		<version>11.0.15</version>
+		<version>17.0.5</version>
 		<relativePath>..</relativePath>
 	</parent>
 
@@ -16,8 +16,8 @@
 		<download.url>https://cdn.azul.com/zulu/bin/</download.url>
 		<!-- to test locally, place files in a local directory
 		<download.url>file:///.../Archive/zulu/</download.url>
-		-->
-		<download.file>zulu11.56.19-ca-jre11.0.15-</download.file>		
+		-->		
+		<download.file>zulu17.38.21-ca-jre17.0.5-</download.file>		
 		<download.filePostfix>os_arch.zip</download.filePostfix>
 		<download.unzippedFolder>${download.file}</download.unzippedFolder>
 		<download.unzippedFolderPostfix>os_arch</download.unzippedFolderPostfix>
@@ -148,8 +148,8 @@
 								<include>${jre.folder}/**/*</include>
 							</includes>
 							<excludes>
-								<exclude>zulu11.56.19-ca-jre11.0.15-macosx_x64</exclude>
-								<exclude>zulu11.56.19-ca-jre11.0.15-macosx_aarch64</exclude>
+								<exclude>zulu17.38.21-ca-jre17.0.5-macosx_x64</exclude>
+								<exclude>zulu17.38.21-ca-jre17.0.5-macosx_aarch64</exclude>
 							</excludes>
 						</fileSet>
 						<!-- filter p2.inf w/ correct version info -->

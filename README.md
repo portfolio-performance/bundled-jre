@@ -25,7 +25,7 @@ The Java version is configured in [bundles/pom.xml](bundles/pom.xml#L20):
 ```xml
 <properties>
   <download.url>https://cdn.azul.com/zulu/bin/</download.url>
-  <download.file>zulu11.33.15-ca-jre11.0.4-</download.file>
+  <download.file>zulu17.38.21-ca-jre17.0.5-</download.file>
   ...
 </properties>
 ```
@@ -76,7 +76,7 @@ Then run the test product created in ~/test/test.product/target/products.
 
 Update the versions using the Tycho versions plugin:
 ```
-mvn org.eclipse.tycho:tycho-versions-plugin:1.0.0:set-version -DnewVersion=11.0.4
+mvn org.eclipse.tycho:tycho-versions-plugin:1.0.0:set-version -DnewVersion=17.0.5
 ```
 
 Of course, this does not update the JRE version itself (update the Java version in the [bundles/pom.xml](bundles/pom.xml#L20)).
