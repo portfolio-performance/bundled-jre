@@ -15,7 +15,7 @@
 	<properties>
 		<download.filePostfix>macosx_aarch64.zip</download.filePostfix>
 		<download.unzippedFolderPostfix>macosx_aarch64</download.unzippedFolderPostfix>
-		<download.jre.folder>zulu-17.jre</download.jre.folder>
+		<download.jre.folder>zulu-21.jre</download.jre.folder>
 		<jre.folder></jre.folder>
 	</properties>
 

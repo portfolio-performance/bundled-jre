@@ -17,7 +17,7 @@
 		<!-- to test locally, place files in a local directory
 		<download.url>file:///.../Archive/zulu/</download.url>
 		-->		
-		<download.file>zulu17.38.21-ca-jre17.0.5-</download.file>		
+		<download.file>zulu21.36.17-ca-jre21.0.4-</download.file>		
 		<download.filePostfix>os_arch.zip</download.filePostfix>
 		<download.unzippedFolder>${download.file}</download.unzippedFolder>
 		<download.unzippedFolderPostfix>os_arch</download.unzippedFolderPostfix>
@@ -148,8 +148,8 @@
 								<include>${jre.folder}/**/*</include>
 							</includes>
 							<excludes>
-								<exclude>zulu17.38.21-ca-jre17.0.5-macosx_x64</exclude>
-								<exclude>zulu17.38.21-ca-jre17.0.5-macosx_aarch64</exclude>
+								<exclude>zulu21.36.17-ca-jre21.0.4-macosx_x64</exclude>
+								<exclude>zulu21.36.17-ca-jre21.0.4-macosx_aarch64</exclude>
 							</excludes>
 						</fileSet>
 						<!-- filter p2.inf w/ correct version info -->
