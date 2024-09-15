@@ -11,7 +11,7 @@
 	<name>Bundled Azul Java JRE</name>
 
 	<properties>
-		<tycho-version>3.0.1</tycho-version>
+		<tycho-version>4.0.8</tycho-version>
 		<jarsigner.plugin.version>3.0.0</jarsigner.plugin.version>
 		<jarsigner.skip>true</jarsigner.skip>
 	</properties>
