@@ -12,7 +12,6 @@
 
 	<properties>
 		<tycho-version>4.0.8</tycho-version>
-		<jarsigner.plugin.version>3.0.0</jarsigner.plugin.version>
 		<jarsigner.skip>true</jarsigner.skip>
 	</properties>
 
@@ -118,6 +117,32 @@
 					<groupId>org.codehaus.mojo</groupId>
 					<artifactId>exec-maven-plugin</artifactId>
 					<version>1.6.0</version>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-jarsigner-plugin</artifactId>
+					<version>3.1.0</version>
+					<executions>
+						<execution>
+							<id>sign</id>
+							<goals>
+								<goal>sign</goal>
+							</goals>
+						</execution>
+					</executions>
+					<configuration>
+						<skip>${jarsigner.skip}</skip>
+						<certs>true</certs>
+						<verbose>true</verbose>
+						<keystore>NONE</keystore>
+						<storetype>PKCS11</storetype>
+						<providerClass>sun.security.pkcs11.SunPKCS11</providerClass>
+						<storepass>${jarsigner.storepass}</storepass>
+						<alias>Andreas Buchen</alias>
+						<providerArg>${jarsigner.providerArg}</providerArg>
+						<certchain>${project.basedir}/../../certchain.txt</certchain>
+						<tsa>http://time.certum.pl/</tsa>
+					</configuration>
 				</plugin>
 			</plugins>
 		</pluginManagement>
