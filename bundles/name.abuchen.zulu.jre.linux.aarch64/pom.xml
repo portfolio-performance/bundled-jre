@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<parent>
+		<groupId>name.abuchen.zulu</groupId>
+		<artifactId>bundles</artifactId>
+		<version>21.0.4</version>
+		<relativePath>..</relativePath>
+	</parent>
+
+	<artifactId>name.abuchen.zulu.jre.linux.aarch64</artifactId>
+	<packaging>eclipse-plugin</packaging>
+
+	<properties>
+		<download.filePostfix>linux_aarch64.tar.gz</download.filePostfix>
+		<download.unzippedFolderPostfix>linux_aarch64</download.unzippedFolderPostfix>
+		<download.type>gzip</download.type>
+	</properties>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.eclipse.tycho</groupId>
+				<artifactId>target-platform-configuration</artifactId>
+				<configuration>
+					<pomDependencies>consider</pomDependencies>
+					<environments>
+						<environment>
+							<os>linux</os>
+							<ws>gtk</ws>
+							<arch>aarch64</arch>
+						</environment>
+					</environments>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>exec-maven-plugin</artifactId>
+			</plugin>
+			<plugin>
+				<artifactId>maven-antrun-plugin</artifactId>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-jarsigner-plugin</artifactId>
+			</plugin>
+		</plugins>
+	</build>
+
+</project>

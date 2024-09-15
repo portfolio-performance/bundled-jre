@@ -28,6 +28,7 @@
 
 	<modules>
 		<module>name.abuchen.zulu.jre.linux.x86_64</module>
+		<module>name.abuchen.zulu.jre.linux.aarch64</module>
 		<module>name.abuchen.zulu.jre.macosx.x86_64</module>
 		<module>name.abuchen.zulu.jre.macosx.aarch64</module>
 		<module>name.abuchen.zulu.jre.win32.x86_64</module>
