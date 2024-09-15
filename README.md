@@ -16,7 +16,6 @@ The [Tycho](https://www.eclipse.org/tycho/) build in this repository does:
 * Download the JDK builds from [Zulu](https://www.azul.com/downloads/zulu/)
 * Create bundles with the appropriate ```setJvm``` [p2 Touchpoint Instructions](http://help.eclipse.org/oxygen/index.jsp?topic=/org.eclipse.platform.doc.isv/guide/p2_actions_touchpoints.html)
 * Create a feature with all JRE bundles and a repository for use in other builds
-* Create an RCP e4 application with self-update functionality to test the packaged JRE
 
 ## Notes
 
@@ -25,7 +24,7 @@ The Java version is configured in [bundles/pom.xml](bundles/pom.xml#L20):
 ```xml
 <properties>
   <download.url>https://cdn.azul.com/zulu/bin/</download.url>
-  <download.file>zulu17.38.21-ca-jre17.0.5-</download.file>
+  <download.file>zulu21.36.17-ca-jre21.0.4-</download.file>
   ...
 </properties>
 ```
@@ -36,25 +35,25 @@ On Linux and macOS, additionally executable permissions must be set.
 
 ```
 instructions.configure = \
-  org.eclipse.equinox.p2.touchpoint.eclipse.setJvm(jvm:../Eclipse/plugins/name.abuchen.zulu.jre.macosx.x86_64_${version}/jre/lib/server/libjvm.dylib);
+  org.eclipse.equinox.p2.touchpoint.eclipse.setJvm(jvm:../Eclipse/plugins/name.abuchen.zulu.jre.macosx.aarch64_${version}/jre/Contents/Home/lib/libjli.dylib);
 
 instructions.unconfigure = \
   org.eclipse.equinox.p2.touchpoint.eclipse.setJvm(jvm:null);
 
 instructions.install = \
-  org.eclipse.equinox.p2.touchpoint.eclipse.chmod(targetDir:${installFolder}/plugins/name.abuchen.zulu.jre.macosx.x86_64_${version}/jre/,targetFile:bin,permissions:755,options:-R);\
-  org.eclipse.equinox.p2.touchpoint.eclipse.chmod(targetDir:${installFolder}/plugins/name.abuchen.zulu.jre.macosx.x86_64_${version}/jre/lib,targetFile:jspawnhelper,permissions:755);
+  org.eclipse.equinox.p2.touchpoint.eclipse.chmod(targetDir:${installFolder}/plugins/name.abuchen.zulu.jre.macosx.aarch64_${version}/jre/Contents/Home/,targetFile:bin,permissions:755,options:-R);\
+  org.eclipse.equinox.p2.touchpoint.eclipse.chmod(targetDir:${installFolder}/plugins/name.abuchen.zulu.jre.macosx.aarch64_${version}/jre/Contents/Home/lib,targetFile:jspawnhelper,permissions:755);\
 ```
 
-Then add the feature to the product definition - see [test.product](test/test.product/test.product):
+Then add the feature to the product definition:
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <?pde version="3.5"?>
 
-<product name="Test Product" ... >
+<product name="My Product" ... >
 
    <features>
-      <feature id="test.feature"/>
+      <feature id="my.feature"/>
       <feature id="org.eclipse.e4.rcp"/>
       ...
 
@@ -72,13 +71,7 @@ Build with Maven 3.x:
 mvn clean verify
 ```
 
-Then run the test product created in ~/test/test.product/target/products.
-
 Update the versions using the Tycho versions plugin:
 ```
-mvn org.eclipse.tycho:tycho-versions-plugin:1.0.0:set-version -DnewVersion=17.0.5
+mvn org.eclipse.tycho:tycho-versions-plugin:set-version -DnewVersion=21.0.4
 ```
-
-Of course, this does not update the JRE version itself (update the Java version in the [bundles/pom.xml](bundles/pom.xml#L20)).
-But it is helpful to test the self-update: build once, then copy the test product to a separate location, update the version number,
-and build again. Then you can run the self-update in the test product. Check that ```java.home``` environment points to the JRE in the updated bundle.
