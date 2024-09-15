@@ -6,7 +6,7 @@
   <parent>
     <groupId>name.abuchen.zulu</groupId>
     <artifactId>test-app</artifactId>
-    <version>17.0.5</version>
+    <version>21.0.4</version>
     <relativePath>..</relativePath>
   </parent>
 

@@ -5,7 +5,7 @@
 
 	<groupId>name.abuchen.zulu</groupId>
 	<artifactId>jre</artifactId>
-	<version>17.0.5</version>
+	<version>21.0.4</version>
 	<packaging>pom</packaging>
 
 	<name>Bundled Azul Java JRE</name>

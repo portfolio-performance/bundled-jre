@@ -2,7 +2,7 @@
 <feature
       id="test.feature"
       label="Feature"
-      version="17.0.5">
+      version="21.0.4">
 
    <description url="http://www.example.com/description">
       [Enter Feature Description here.]
