@@ -90,6 +90,23 @@
 									</else>
 								</ac:if>
 								<move file="${project.build.directory}/downloads/${download.unzippedFolder}${download.unzippedFolderPostfix}/${download.jre.folder}" tofile="${project.build.directory}/downloads/${jre.folder}"/>
+								<!-- resign the package because unzipping with Java removes the newline at the end of the legal files -->
+								<ac:if xmlns:ac="antlib:net.sf.antcontrib">
+									<contains string="${project.artifactId}" substring="macos"/>
+									<then>
+										<exec executable="codesign">
+											<arg value="-s"/>
+											<arg value="${env.CODESIGN_ID}"/>
+											<arg value="--deep"/>
+											<arg value="--timestamp"/>
+											<arg value="--options"/>
+											<arg value="runtime"/>
+											<arg value="--force"/>
+											<arg value="-vvv"/>
+											<arg value="${project.build.directory}/downloads/${jre.folder}"/>
+										</exec>
+									</then>
+								</ac:if>
 							</target>
 						</configuration>
 					</execution>
@@ -146,10 +163,6 @@
 							<includes>
 								<include>${jre.folder}/**/*</include>
 							</includes>
-							<excludes>
-								<exclude>zulu21.36.17-ca-jre21.0.4-macosx_x64</exclude>
-								<exclude>zulu21.36.17-ca-jre21.0.4-macosx_aarch64</exclude>
-							</excludes>
 						</fileSet>
 						<!-- filter p2.inf w/ correct version info -->
 						<fileSet>
