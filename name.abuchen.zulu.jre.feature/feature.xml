@@ -2,7 +2,7 @@
 <feature
       id="name.abuchen.zulu.jre.feature"
       label="%Bundle-Name"
-      version="21.0.4"
+      version="21.0.5"
       provider-name="%Bundle-Vendor">
 
    <plugin
