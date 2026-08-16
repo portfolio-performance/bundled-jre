@@ -24,10 +24,15 @@ The Java version is configured in [bundles/pom.xml](bundles/pom.xml#L20):
 ```xml
 <properties>
   <download.url>https://cdn.azul.com/zulu/bin/</download.url>
-  <download.file>zulu21.36.17-ca-jre21.0.4-</download.file>
+  <download.file>zulu25.36.15-ca-jre25.0.4-</download.file>
   ...
 </properties>
 ```
+
+Check the layout inside the downloaded archives. The macOS archives used to contain the JRE twice -
+once as a plain directory and once as a `zulu-<version>.jre` bundle - and the `download.jre.folder`
+property picked the bundle. As of Zulu 25 the archive *is* the bundle, i.e. `Contents/Home` sits
+directly in the unzipped folder and `download.jre.folder` is empty for all platforms.
 
 Review the [p2.inf](bundles/name.abuchen.zulu.jre.macosx.x86_64/src/main/template/META-INF/p2.inf) - no change needed.
 The p2.inf files have to be generated during the build because they must contain the correct path - including the version.
@@ -66,12 +71,27 @@ Then add the feature to the product definition:
 
 ## Building
 
-Build with Maven 3.x:
+Build with Maven 3.9.x:
 ```
 mvn clean verify
 ```
 
+Tycho derives the `JavaSE-25` execution environment from a real JDK, so a JDK 25 must be visible to
+the build - either as the JDK running Maven, or via a toolchain in `~/.m2/toolchains.xml`:
+
+```xml
+<toolchain>
+  <type>jdk</type>
+  <provides><version>25</version><id>JavaSE-25</id></provides>
+  <configuration>
+    <jdkHome>/Library/Java/JavaVirtualMachines/zulu-25.jdk/Contents/Home</jdkHome>
+  </configuration>
+</toolchain>
+```
+
+Building the macOS bundles re-signs the JRE and expects the signing identity in `CODESIGN_ID`.
+
 Update the versions using the Tycho versions plugin:
 ```
-mvn org.eclipse.tycho:tycho-versions-plugin:set-version -DnewVersion=21.0.4
+mvn org.eclipse.tycho:tycho-versions-plugin:set-version -DnewVersion=25.0.4
 ```

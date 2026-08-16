@@ -5,13 +5,13 @@
 
 	<groupId>name.abuchen.zulu</groupId>
 	<artifactId>jre</artifactId>
-	<version>21.0.5</version>
+	<version>25.0.4</version>
 	<packaging>pom</packaging>
 
 	<name>Bundled Azul Java JRE</name>
 
 	<properties>
-		<tycho-version>4.0.8</tycho-version>
+		<tycho-version>5.0.4</tycho-version>
 		<jarsigner.skip>true</jarsigner.skip>
 	</properties>
 
@@ -35,7 +35,7 @@
 				<version>${tycho-version}</version>
 				<configuration>
 					<pomDependencies>consider</pomDependencies>
-					<executionEnvironment>JavaSE-21</executionEnvironment>
+					<executionEnvironment>JavaSE-25</executionEnvironment>
 					<environments>
 						<environment>
 							<os>linux</os>
