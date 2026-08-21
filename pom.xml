@@ -139,6 +139,12 @@
 								<goal>sign</goal>
 							</goals>
 						</execution>
+						<execution>
+							<id>verify</id>
+							<goals>
+								<goal>verify</goal>
+							</goals>
+						</execution>
 					</executions>
 					<configuration>
 						<skip>${jarsigner.skip}</skip>
@@ -148,7 +154,7 @@
 						<storetype>PKCS11</storetype>
 						<providerClass>sun.security.pkcs11.SunPKCS11</providerClass>
 						<storepass>${jarsigner.storepass}</storepass>
-						<alias>Andreas Buchen</alias>
+						<alias>${jarsigner.alias}</alias>
 						<providerArg>${jarsigner.providerArg}</providerArg>
 						<certchain>${project.basedir}/../../certchain.txt</certchain>
 						<tsa>http://time.certum.pl/</tsa>
