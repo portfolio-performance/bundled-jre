@@ -6,4 +6,5 @@ instructions.unconfigure = \
 
 instructions.install = \
   org.eclipse.equinox.p2.touchpoint.eclipse.chmod(targetDir:${installFolder}/plugins/name.abuchen.zulu.jre.linux.x86_64_${version}/jre,targetFile:bin,permissions:755,options:-R);\
-  org.eclipse.equinox.p2.touchpoint.eclipse.chmod(targetDir:${installFolder}/plugins/name.abuchen.zulu.jre.linux.x86_64_${version}/jre/lib,targetFile:jexec,permissions:755);
+  org.eclipse.equinox.p2.touchpoint.eclipse.chmod(targetDir:${installFolder}/plugins/name.abuchen.zulu.jre.linux.x86_64_${version}/jre/lib,targetFile:jexec,permissions:755);\
+  org.eclipse.equinox.p2.touchpoint.eclipse.chmod(targetDir:${installFolder}/plugins/name.abuchen.zulu.jre.linux.x86_64_${version}/jre/lib,targetFile:jspawnhelper,permissions:755);
