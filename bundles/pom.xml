@@ -32,6 +32,7 @@
 		<module>name.abuchen.zulu.jre.macosx.x86_64</module>
 		<module>name.abuchen.zulu.jre.macosx.aarch64</module>
 		<module>name.abuchen.zulu.jre.win32.x86_64</module>
+		<module>name.abuchen.zulu.jre.win32.aarch64</module>
 	</modules>
 
 	<build>

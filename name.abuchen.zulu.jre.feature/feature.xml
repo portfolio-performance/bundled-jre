@@ -45,4 +45,12 @@
          arch="x86_64"
          unpack="true"/>
 
+   <plugin
+         id="name.abuchen.zulu.jre.win32.aarch64"
+         version="0.0.0"
+         optional="true"
+         os="win32"
+         arch="aarch64"
+         unpack="true"/>
+
 </feature>
