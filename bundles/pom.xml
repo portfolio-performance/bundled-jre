@@ -90,7 +90,21 @@
 										<unzip dest="${project.build.directory}/downloads/" src="${project.build.directory}/${download.file}${download.filePostfix}"/>
 									</else>
 								</ac:if>
+								<!--
 								<move file="${project.build.directory}/downloads/${download.unzippedFolder}${download.unzippedFolderPostfix}/jre" tofile="${project.build.directory}/downloads/${jre.folder}"/>
+								-->
+								<ac:if xmlns:ac="antlib:net.sf.antcontrib">
+									<available file="${project.build.directory}/downloads/${download.unzippedFolder}${download.unzippedFolderPostfix}/zulu-8.jdk/Contents/Home/jre"/>
+									<then>
+										<echo message="macOS archive layout detected (zulu-8.jdk), copying real JRE"/>
+										<copy todir="${project.build.directory}/downloads/${jre.folder}">
+											<fileset dir="${project.build.directory}/downloads/${download.unzippedFolder}${download.unzippedFolderPostfix}/zulu-8.jdk/Contents/Home/jre"/>
+										</copy>
+									</then>
+									<else>
+										<move file="${project.build.directory}/downloads/${download.unzippedFolder}${download.unzippedFolderPostfix}/jre" tofile="${project.build.directory}/downloads/${jre.folder}"/>
+									</else>
+								</ac:if>
 							</target>
 						</configuration>
 					</execution>
